@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "561010878659",
+    "firebase_url": "https://realtime-talking.firebaseio.com",
+    "project_id": "realtime-talking",
+    "storage_bucket": "realtime-talking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561010878659:android:4e66ae8f210bc61d5e5a76",
+        "android_client_info": {
+          "package_name": "com.realtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561010878659-2rvliv7rqupqdf6eip9uus5tajnmbvum.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJWGLk4SEGmfkiXQ5VJbL0WDHxJFGy68M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561010878659-2rvliv7rqupqdf6eip9uus5tajnmbvum.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
