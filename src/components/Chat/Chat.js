@@ -1,17 +1,11 @@
 import React, {Component} from 'react'
 import { GiftedChat,Send, } from 'react-native-gifted-chat'
-import { View, Text, TouchableOpacity, StatusBar, Image } from 'react-native';
+import { View, Text, StatusBar,} from 'react-native';
 import {
   Header,
-  Content,
-  Item,
-  Button,
-  Icon,
   Container,
   Left,
   Right,
-  Fab,
-  Body
 } from 'native-base';
 import { Bubble, } from 'react-native-gifted-chat';
 import database, { firebase } from '@react-native-firebase/database';
@@ -125,7 +119,7 @@ export class Chat extends Component {
       <Header transparent>
           <StatusBar backgroundColor="#9BACBE" barStyle="light-content" />
           <Left> 
-            <Text style={{ paddingHorizontal: 20, color: 'black', fontSize: 20, fontWeight: 'bold' }}>ok</Text>
+            <Text style={{ paddingHorizontal: 20, color: 'black', fontSize: 20, fontWeight: 'bold' }}>Chat</Text>
           </Left>
           <Right>
       </Right>

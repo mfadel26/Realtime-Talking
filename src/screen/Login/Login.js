@@ -36,6 +36,15 @@ export class Login extends Component {
     loginSubmit = () => {
         this.setState({ Onprosess: true })
         const { email, password } = this.state
+        if (!email || !password) {
+            this.setState({
+                errorMessage: "Email Or Password isEmpty",
+                visible: true
+            }, () => {
+                this.hideToast()
+            })
+            return
+        }
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(res => {
                 this.setState({ Onprosess: false })
@@ -130,6 +139,7 @@ export class Login extends Component {
                     <Image source={require('../../../Global/Asset/Image/sample.png')} style={styles.avatar} />
                 </View>
                 <View style={styles.form}>
+                <Toast visible={this.state.visible} message={this.state.errorMessage}/>
                     <View>
                         <Text style={styles.inputTitle}>Email Address</Text>
                         <TextInput
@@ -189,7 +199,7 @@ GoogleSignin.configure({
         return null;
     }
     return null;
-};
+  };
   
 
 const styles = StyleSheet.create({

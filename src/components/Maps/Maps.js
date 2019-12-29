@@ -186,7 +186,7 @@ export class Maps extends Component {
               <Text
                 style={styles.buttonText}
                 onPress={() => this.getLocation()}>
-                Find Your Friends
+                My Location
               </Text>
             </TouchableOpacity>
           </View>
