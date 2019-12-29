@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, StatusBar,ToastAndroid,ActivityIndicator } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, StatusBar,ToastAndroid,ActivityIndicator,TouchableHighlight } from "react-native";
 import { firebase } from '@react-native-firebase/auth';
 import {
     GoogleSignin,
@@ -16,6 +16,7 @@ export class Login extends Component {
             password: '',
             visible: false,
             errorMessage: null,
+            Onprosess: false
         }
         this.regis = this.regis.bind(this);
         this.loginSubmit = this.loginSubmit.bind(this)
@@ -24,15 +25,29 @@ export class Login extends Component {
         this.props.navigation.navigate('regis')
       }
 
-      loginSubmit = () => {
+      hideToast = () => {
+        this.setState({
+            visible: false,
+        });
+    };
+
+
+
+    loginSubmit = () => {
+        this.setState({ Onprosess: true })
         const { email, password } = this.state
         firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(res => {
+                this.setState({ Onprosess: false })
+            })
             .catch(err => {
                 this.setState({
                     errorMessage: err.message,
-                },)
+                    visible: true
+                }, () => this.hideToast())
             })
     }
+
     loginGoole = async () => {
         this.setState({ Onprosess: true })
         try {
@@ -132,23 +147,16 @@ export class Login extends Component {
                         </TextInput>
                     </View>
                 </View>
-                <TouchableOpacity style={styles.button} onPress={this.loginSubmit}>
+                <TouchableHighlight style={styles.button} onPress={this.loginSubmit}>
                     <Text style={{ color: "black", fontWeight: "500" }}>Log In</Text>
-                </TouchableOpacity>
+                </TouchableHighlight>
                 <View style={{ alignItems: "center",justifyContent: "center", marginBottom:10,marginTop:10}}>
-                <Text style={{ color: "#414959", fontSize: 10 }}>----------------------------------------------------------------------------------------------------------------</Text>
                 </View>
-                {/* <TouchableOpacity style={styles.button}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-            <Image source={require('../../../Global/Asset/Image/google.png')} style={styles.Icon} />
-                <Text style={{ color: "black", fontWeight: "500" }}>Login with Google</Text>
-                </View>
-            </TouchableOpacity> */}
- <View style={{alignItems: 'center', justifyContent: 'center'}}>
+             <View style={{alignItems: 'center', justifyContent: 'center'}}>
             <GoogleSigninButton
-              style={{height: 52, width: '87%'}}
+              style={{height: 52, width: '90%',borderRadius:40,}}
               size={GoogleSigninButton.Size.Wide}
-              color={GoogleSigninButton.Color.Light}
+              color={GoogleSigninButton.Color.light}
               onPress={this.loginGoole}
               disabled={this.state.isSigninInProgress}
             />
@@ -169,6 +177,19 @@ GoogleSignin.configure({
     webClientId:
       '561010878659-2rvliv7rqupqdf6eip9uus5tajnmbvum.apps.googleusercontent.com',
   });
+  const Toast = (props) => {
+    if (props.visible) {
+        ToastAndroid.showWithGravityAndOffset(
+            props.message,
+            ToastAndroid.LONG,
+            ToastAndroid.TOP,
+            1,
+            800,
+        );
+        return null;
+    }
+    return null;
+};
   
 
 const styles = StyleSheet.create({
