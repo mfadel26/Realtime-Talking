@@ -13,7 +13,7 @@
 [![Firebase](https://img.shields.io/badge/firebase-v7.10-orange)](https://firebase.google.com/?gclid=EAIaIQobChMI2qeqx_3C4wIVTiUrCh0i0QGfEAAYASAAEgIPNfD_BwE)
 [![Firebase](https://img.shields.io/badge/React%20Native%20Maps-0.26.1-green.svg?style=rounded-square)](https://github.com/react-native-community/react-native-maps)
 ![React Native Geolocation Service](https://img.shields.io/badge/react%20native%20geolocation%20service-v3.1.0-brightgreen)
-![React Native Gifted Chat](https://img.shields.io/badge/react%20native%20gifted%20chat-v0.11.0-yellowgreen)
+![React Native Gifted Chat](https://img.shields.io/badge/react%20native%20gifted%20chat-v0.13.0-yellowgreen)
 
 <p align='justify'>Talking is a chat application with the map feature for track / show location user's friends near the location current user. Talking Chat built using a base real time data and the database used is Firebase.</p>
 
