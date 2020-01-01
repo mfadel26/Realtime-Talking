@@ -70,7 +70,7 @@ const Navigator = createMaterialTopTabNavigator({
         showIcon: true,
         style: { backgroundColor: '#eeeeee', height: 50, },
         indicatorStyle: {
-            backgroundColor: 'white',
+            backgroundColor: 'black',
         }
     },
     tabBarPosition: 'bottom'

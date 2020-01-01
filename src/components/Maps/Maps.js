@@ -8,12 +8,14 @@ import {
   PermissionsAndroid,
   Dimensions,
   TouchableOpacity,
+  StyleSheet
 } from 'react-native';
 import MapView, {Marker , PROVIDER_GOOGLE} from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
 import styles from '../../../Global/styles/styles'
 import database from '@react-native-firebase/database';
 import SafeAreaView from 'react-native-safe-area-view';
+import Carousel from 'react-native-snap-carousel';
 
 const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -124,75 +126,122 @@ export class Maps extends Component {
       );
     });
   };
+  onCorouselItemChange = (index) =>{
+    let location = this.state.userList[index]
+    this._map.animateToRegion({
+      latitude: location.latitude,
+      longitude: location.longitude,
+      latitudeDelta: 0.00922,
+      longitudeDelta: 0.00421 * 1.5,
+    })
+  }
+  _renderItem = ({item}) => 
+  <TouchableOpacity onPress={() => this.props.navigation.navigate('chat', {item})}>  
+        <View style={style.card}>
+            <Text style={style.name}>{ item.name }</Text>
+            <Image
+                      source={{uri: item.photo}}
+                      style={style.imgcard}
+                    /> 
+        </View>
+        </TouchableOpacity>
 
   render() {
-    // console.warn(this.state.userList);
     return (
       <SafeAreaView style={{flex: 1}}>
-        {/* <Header /> */}
         <View
           style={[
             styles.container,
             {
               justifyContent: 'flex-start',
-              paddingHorizontal: 20,
-              paddingTop: 20,
+             
             },
           ]}>
+            
           <MapView
-            style={{width: '110%', height: '90%'}}
-            showsMyLocationButton={true}
-            provider={PROVIDER_GOOGLE}
-            showsIndoorLevelPicker={true}
-            showsUserLocation={true}
-            zoomControlEnabled={true}
-            showsCompass={true}
-            showsTraffic={true}
-            region={this.state.mapRegion}
-            initialRegion={{
-              latitude: -7.755322,
-              longitude: 110.381174,
-              latitudeDelta: LATITUDE_DELTA,
-              longitudeDelta: LONGITUDE_DELTA,
-            }}>
+           style={{width: '100%', height: '100%'}}
+           showsMyLocationButton={true}
+           provider={PROVIDER_GOOGLE}
+           ref={map => this._map = map}
+           showsIndoorLevelPicker={true}
+           showsUserLocation={true}
+           zoomControlEnabled={true}
+           showsCompass={true}
+           showsTraffic={true}
+           region={this.state.mapRegion}
+           initialRegion={{
+             latitude: -7.755322,
+             longitude: 110.381174,
+             latitudeDelta: LATITUDE_DELTA,
+             longitudeDelta: LONGITUDE_DELTA,
+           }}>
             {this.state.userList.map(item => {
-              return (
-                <Marker
-                  key={item.id}
-                  title={item.name}
-                  description={item.status}
-                  draggable
-                  coordinate={{
-                    latitude: item.latitude || 0,
-                    longitude: item.longitude || 0,
-                  }}
-                  onCalloutPress={() => {
-                    this.props.navigation.navigate('Profile', {
-                      item,
-                    });
-                  }}>
-                  <View>
-                    <Image
-                      source={{uri: item.photo}}
-                      style={{width: 40, height: 40, borderRadius: 50}} />
-                    <Text>{item.name}</Text>
-                  </View>
-                </Marker>
-              );
-            })}
-          </MapView>
-          <View style={styles.menuBottom}>
-            <TouchableOpacity>
-              <Text
-                style={styles.buttonText}
-                onPress={() => this.getLocation()}>
-                My Location
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </SafeAreaView>
-    );
-  }
+             return (
+              <Marker
+                key={item.id}
+                title={item.name}
+                description={item.status}
+                draggable
+                coordinate={{
+                  latitude: item.latitude || 0,
+                  longitude: item.longitude || 0,
+                }}
+                onCalloutPress={() => {
+                  this.props.navigation.navigate('friends', {
+                    item,
+                  });
+                }}>
+                <View>
+                  <Image
+                    source={{uri: item.photo}}
+                    style={{width: 40, height: 40, borderRadius: 50}}
+                  />
+                  <Text style={{paddingTop:20}}>{item.name}</Text>
+                </View>
+              </Marker>
+            );
+          })}
+        </MapView>
+        <Carousel
+            ref={(c) => { this._carousel = c; }}
+            data={this.state.userList}
+            renderItem={this._renderItem}
+            containerCustomStyle={style.corousel}
+            sliderWidth={Dimensions.get('window').width}
+            itemWidth={200}
+            style={{flex : 1}}
+            onSnapToItem={(index)=> this.onCorouselItemChange(index)}
+          />
+      </View>
+    </SafeAreaView>
+  );
 }
+}
+
+const style = StyleSheet.create({
+  corousel : {
+    position : 'absolute',
+    bottom : 0
+  },
+  card : {
+    backgroundColor : 'black',
+    height : 180,
+    width : 240,
+    padding : 18,
+    borderRadius : 15
+  },
+  imgcard : {
+    height : 120,
+    width : 240,
+    bottom : 0,
+    position : 'absolute',
+    borderBottomLeftRadius : 15,
+    borderBottomRightRadius : 15,
+  },
+  name : {
+    color : 'white',
+    fontSize : 18,
+    alignSelf : 'center'
+  }
+})
 export default Maps
