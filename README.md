@@ -46,9 +46,9 @@ You can Download the APK [`here`](https://drive.google.com/file/d/1Jrr2H2cRCS_xg
 </p>
 <p align='center'>
   <span>
-      <image width="200" src="./screenshoot/contact.jpg" />
-        <image width="200" src="./screenshoot/maps.jpg" />
-      <image width="200" src="./screenshoot/chat.jpg" />
+      <image width="200" src='./Global/Asset/Image/tlk4.png' />
+        <image width="200" src='./Global/Asset/Image/tlk5.png' />
+      <image width="200" src='./Global/Asset/Image/tlk6.png' />
       
   </span>
 </p>
