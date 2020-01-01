@@ -37,9 +37,9 @@ You can Download the APK [`here`](https://drive.google.com/file/d/1Jrr2H2cRCS_xg
 
 <p align='center'>
   <span>
-      <image width="200" src="./screenshoot/home.jpg" />
-      <image width="200" src="./screenshoot/signin.jpg" />
-      <image width="200" src="./screenshoot/signup.jpg" />
+      <image width="200" src='./Global/Asset/Image/tlk1.png' />
+      <image width="200" src='./Global/Asset/Image/tlk2.png' />
+      <image width="200" src='./Global/Asset/Image/tlk3.png' />
      
       
   </span>
