@@ -1,7 +1,7 @@
 <h1 align='center'>Talking <br>React Native Chat Apps with Maps</h1>
 
 <p align='center'>
-    <img width="400" src='./Global/Asset/Image/tlk1.png' />
+    <img width="400" src='./Global/Asset/Image/ezgif.com-crop-min.gif' />
 </p>
 
 <br>
