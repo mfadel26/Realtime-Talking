@@ -9,7 +9,7 @@
 
 ## Introduction
 
-[![React Native](https://img.shields.io/badge/react%20native-v0.61.2-blue)](https://facebook.github.io/react-native/)
+[![React Native](https://img.shields.io/badge/react%20native-v0.61.5-blue)](https://facebook.github.io/react-native/)
 [![Firebase](https://img.shields.io/badge/firebase-v7.10-orange)](https://firebase.google.com/?gclid=EAIaIQobChMI2qeqx_3C4wIVTiUrCh0i0QGfEAAYASAAEgIPNfD_BwE)
 [![Firebase](https://img.shields.io/badge/React%20Native%20Maps-0.26.1-green.svg?style=rounded-square)](https://github.com/react-native-community/react-native-maps)
 ![React Native Geolocation Service](https://img.shields.io/badge/react%20native%20geolocation%20service-v3.1.0-brightgreen)
