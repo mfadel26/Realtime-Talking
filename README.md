@@ -53,8 +53,4 @@ You can Download the APK [`here`](https://drive.google.com/file/d/1Jrr2H2cRCS_xg
   </span>
 </p>
 <p align='center'>
-  <span>
-      <image width="200" src="./screenshoot/friendprofile.jpg" />
-      <image width="200" src="./screenshoot/profile.jpg" />      
-  </span>
 </p>
